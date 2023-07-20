@@ -1,6 +1,7 @@
 const contents = getNode('.contents');
 const textField = getNode('#comment37');
 const commentContainer = getNode('.comment_container')
+const commentCount = getNode('.comment_count')
 
 
 const createComment = (user, value) => {
@@ -65,6 +66,8 @@ const handleArticle = (e) => {
     
     clearContents(textField);
   }
+
+  commentCount.textContent = `${+getNodes('.id').length}`
  
 }
 
