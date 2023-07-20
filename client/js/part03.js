@@ -27,10 +27,14 @@ const data = [
 
 
 const swiper = new Swiper('.swiper',{
-  autoplay: true,
+  autoplay: {
+    disableOnInteraction: false,
+  },
   loop: true,
+  speed: 2000,
+  parallax: true,
   pagination:{
-    el:'.swiper-pagination',
+    el:'.pagination',
     clickable:true,
     bulletClass: 'bullet',
     bulletActiveClass:'is-active',
@@ -42,10 +46,19 @@ const swiper = new Swiper('.swiper',{
       `
     }
     
-  }
+  },
 })
 
+const title = document.querySelector('h3');
 
+swiper.on('slideChange',function(e){
+  title.classList.remove('is-active');
+  // 슬라이드가 넘어갈 때 slidechange, title=h3 의 클래스 리스트에서 is-active 를 지워달라.
+})
 
+.on('slideChangeTransitionEnd',function(e){
+  title.classList.add('is-active');
+  // 슬라이드가 끝날 때 slideChangeTransitionEnd, title=h3 의 클래스 리스트에서 is-active 를 추가해달라.
+})
 
 
